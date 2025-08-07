@@ -26,6 +26,31 @@ Tecnologias Sugeridas
 *	Câmera: Usar expo-cameraou bibliotecas nativas.
 *	Banco de dados local: SQLite ou AsyncStorage para histórico.
 
+import kotlin.random.Random
+
+enum class ChallengeType {
+    MATH, PHOTO, MEMORY, QR, SHAKE, FACE, TYPING, PUZZLE
+}
+
+fun getRandomChallenge(): ChallengeType {
+    val challenges = ChallengeType.values()
+    return challenges[Random.nextInt(challenges.size)]
+}
+
+// Exemplo de chamada quando o alarme toca
+fun onAlarmTriggered() {
+    val challenge = getRandomChallenge()
+    when (challenge) {
+        ChallengeType.MATH -> launchMathChallenge()
+        ChallengeType.PHOTO -> launchPhotoChallenge()
+        ChallengeType.MEMORY -> launchMemoryChallenge()
+        ChallengeType.QR -> launchQrChallenge()
+        ChallengeType.SHAKE -> launchShakeChallenge()
+        ChallengeType.FACE -> launchFaceChallenge()
+        ChallengeType.TYPING -> launchTypingChallenge()
+        ChallengeType.PUZZLE -> launchPuzzleChallenge()
+    }
+}
 
 <!--
 **LDanielMoletta/LDanielMoletta** is a ✨ _special_ ✨ repository because its `README.md` (this file) appears on your GitHub profile.
